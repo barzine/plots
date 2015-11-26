@@ -4,6 +4,7 @@ scatplot.log2.color<-function(data,x,y,title,xlabs,ylabs,min,max,a=0.65,
                               smooth=TRUE,xmin,ymin,xmax,ymax,abline=TRUE,publi=FALSE,col=NULL,labCol,...){
     require(ggplot2)
     require(gridExtra)
+    require(scales)
 
     ##creation of the main plot
     x2=paste(paste("log2(",substitute(x)),")")
