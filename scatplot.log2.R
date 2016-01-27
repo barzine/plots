@@ -25,9 +25,9 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,
 
 
     data.label<-data.frame(
-                           cor=cor(data[x],data[y],use="pairwise.complete.obs", method=methodcor),
+                           cor=cor(log2(data[x]+1),log2(data[y]+1),use="pairwise.complete.obs", method=methodcor),
                            x=xcor,y=ycor,
-                           label=paste("r= ",signif(cor(data[x],data[y],use="pairwise.complete.obs", method=methodcor)[1,1],digit=6))
+                           label=paste("r= ",signif(cor(log2(data[x]+1),log2(data[y]+1),use="pairwise.complete.obs", method=methodcor)[1,1],digit=6))
                            )
     print(data.label$cor)
 
@@ -75,8 +75,7 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,
     if (rug){#allows some sort of visualization of the most dense parties of one axis
         p <- p + geom_rug(col=rgb(0,0,0.5,alpha=0.015))
     }
-
-
+    
     p1 <- p + theme(legend.position='none')#legend stripped from this plot
 
     ##creation of the histogram for the x axis
@@ -89,7 +88,6 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,
     p2 <- p2 + coord_cartesian(xlim=c(xmin,xmax))
     p2 <- p2 + theme(axis.title.y=element_blank(), axis.title.x=element_blank())
     p2 <- p2 + scale_y_reverse()
-    #if (hbar) p2 <- p2 + coord_cartesian(ylim=c(0,hbar),xlim=c(xmin,xmax)) #to see if fixable
     p2 <- p2 + theme(panel.grid=element_blank())
     p2 <- p2 + theme(axis.text.x=element_blank())
 
@@ -103,15 +101,10 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,
     p3 <- reset.legend.y(p3)
     p3 <- p3 + theme(axis.title.y=element_blank(), axis.title.x=element_blank())
     p3 <- p3 + coord_flip(coord_cartesian(ylim=c(ymin,ymax)))
-    #if (hbar){ #to see if fixable
-    #   p3 <- p3 + coord_flip(coord_cartesian(ylim=c(ymin,ymax),xlim=c(0,hbar)))
-    #}else{
-    #   p3 <- p3 + coord_flip(coord_cartesian(ylim=c(ymin,ymax))) #allows to flip the cartesian coordinates (what is horizontal becomes verti>
-    #}
+
     p3 <- p3 + scale_y_reverse()
     p3 <- p3 + theme(panel.grid=element_blank())
     p3 <- p3 + theme(axis.text.x  = element_text(angle=90, vjust=0))
-    #p3 <- p3 + theme(axis.text.y  = element_text(vjust=0.015,hjust=1))
     p3 <- p3 + theme(axis.text.y=element_blank())
 
 
@@ -128,7 +121,7 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,
 
     if (fig){
         suppressWarnings(grid.arrange(arrangeGrob(gp3, gp1,legend,gp2,  widths=c(1,5), heights=c(5,1))))
-        #suppressWarnings(grid.arrange(gp3, gp1,legend,gp2,  widths=c(1,3), heights=c(3,1)))
+
     }else{
         return(list(gp3, gp1,legend,gp2))#changed to list of something
     }
