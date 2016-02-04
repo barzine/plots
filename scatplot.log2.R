@@ -8,6 +8,9 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,a=0.65,
       require(mgcv)
       require(gridExtra)
       
+      #function developped Hadley
+      #found in this (by Michael Kuhn) blog:http://blog.mckuhn.de/2013/04/2d-plot-with-histograms-for-each.html
+      #and was referencing: https://github.com/hadley/ggplot2/wiki/Share-a-legend-between-two-ggplot2-graphs
       g_legend<-function(a_ggplot){
         tmp <- ggplot_gtable(ggplot_build(a_ggplot))
         leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
