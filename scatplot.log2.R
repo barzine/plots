@@ -157,10 +157,10 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,a=0.65,
       if(publi)   p3<-p3+theme_bw() +theme(panel.border=element_rect(linetype=NULL,colour=NA))
 
       p3 <- p3 + geom_histogram(aes(y=(..count..)),binwidth=biny)
-          p3 <- p3 + theme(axis.title.y=element_blank(), axis.title.x=element_blank())
-      p3 <- p3 + coord_cartesian(xlim=c(ymin,ymax))+ coord_flip()
+      p3 <- p3 + theme(axis.title.y=element_blank(), axis.title.x=element_blank())
       p3 <- p3 + scale_y_reverse()
       p3 <- p3 + theme(axis.text.x  = element_text(angle=90, vjust=0))
+      p3 <- p3 + coord_flip(xlim=c(ymin,ymax))
       p3 <- p3 + theme(axis.text.y=element_blank())
       p3 <- p3 + theme(legend.position="none")
 
@@ -179,15 +179,15 @@ scatplot.log2<-function(data,x,y,title,xlabs,ylabs,min,max,a=0.65,
       #legend$heights <- gp3$heights
       #legend$widths <-  gp2$widths
 
-      if (fig=='all'){
-          suppressWarnings(grid.arrange(arrangeGrob(gp3, gp1,legend,gp2,  widths=c(1,5), heights=c(5,1))))
-      }else{
-          if (fig=='list'){
-              return(list(gp3, gp1,legend,gp2))#changed to list of something
-          }else{
-              return(p)
-          }
-      }
-      return()
+      switch(fig,
+             'all' =   {return(suppressWarnings(grid.arrange(arrangeGrob(gp3, gp1,legend,gp2,  widths=c(1,5), heights=c(5,1)))))},
+             'list'=   {return(list(gp3, gp1,legend,gp2))},#changed to list of something
+             'p'   =   {return(print(p))},
+             'p1'  =   {return(print(p1))},
+             'p2'  =   {return(print(p2))},
+             'p3'  =   {return(print(p3))},
+             'legend'= {return(print(legend))},
+             {return(p)}
+             )
   }
   
