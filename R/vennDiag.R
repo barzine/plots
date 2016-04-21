@@ -26,17 +26,17 @@ DrawVenn<-function(...,a,b,c,d,e,names,fills,cols,titlelab,fig=TRUE,type='vec',t
             },
       "rownames"={
             a1<-rownames(a)
-            if(!missing(b) b1<-rownames(b)
-            if(!missing(c) c1<-rownames(c)
-            if(!missing(d) d1<-rownames(d)
-            if(!missing(e) e1<-rownames(e)
+            if(!missing(b)) b1<-rownames(b)
+            if(!missing(c)) c1<-rownames(c)
+            if(!missing(d)) d1<-rownames(d)
+            if(!missing(e)) e1<-rownames(e)
             },
       "colnames"={
             a1<-colnames(a)
-            if(!missing(b) b1<-colnames(b)
-            if(!missing(c) c1<-colnames(c)
-            if(!missing(d) d1<-colnames(d)
-            if(!missing(e) e1<-colnames(e)
+            if(!missing(b)) b1<-colnames(b)
+            if(!missing(c)) c1<-colnames(c)
+            if(!missing(d)) d1<-colnames(d)
+            if(!missing(e)) e1<-colnames(e)
             })
     
     
@@ -57,7 +57,7 @@ DrawVenn<-function(...,a,b,c,d,e,names,fills,cols,titlelab,fig=TRUE,type='vec',t
                               n25=length(intersect(b,e)),
                               n34=length(intersect(c,d)),
                               n35=length(intersect(c,e)),
-                              n45=length(intersect(d,e))),
+                              n45=length(intersect(d,e)),
                               n123=length(intersect(intersect(a,b),c)),
                               n124=length(intersect(intersect(a,b),d)),
                               n125=length(intersect(intersect(a,b),e)),
