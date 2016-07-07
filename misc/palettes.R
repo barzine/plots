@@ -17,3 +17,20 @@ TissueCol_17<-setNames(c("#6FB241","#AC8DCD","#C49238","#506D33",
                         "Pancreas", "Prostate","Testis","Salivary",
                         "Skin","Spleen","Stomach","Thyroid","Uterus" ))
 
+TissueCol_20=setNames(c("#6FB241","#AC8DCD","#C49238","#506D33",
+                          "#D1472D","#CA7A9F","#4DA28A","#6C68CB",
+                          "#C63969","#7C4529","#6199C1","#D0736A",
+                          "#6CB06B","#D17332","#78B626" ,"#A93F90",
+                          "#CF55D8","#E656B7","#563467","#54BAC8"),
+                        c("Adrenal","Colon","Esophagus","Heart",
+                          "Kidney","Liver","Lung","Ovary",
+                          "Pancreas", "Prostate","Testis","Salivary.gland",
+                          "Skin","Spleen","Stomach","Thyroid",
+                          "Uterus","Gallbladder","Placenta","Rectum"))
+
+datasetCol<-setNames(c('orange','red','blue','darkorchid1','forestgreen',
+                       'tomato3','tan1','coral4',
+                       '#55AA55','#550000'),
+                     c('Castle','IBM','Brawand','Uhlen','Gtex',
+                       'Cutler','Kuster','Pandey',
+                       'Transcriptomics','Proteomics'))
