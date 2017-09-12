@@ -13,7 +13,7 @@ p.list<-lapply(1:4, function(z){
                Z2=paste0('y',z)
                return(suppressWarnings(ggplot_gtable(ggplot_build(
                       ggplot(anscombe,aes_string(x=Z1,y=Z2)) + geom_point() + 
-                      coord_cartesian(xlim=c(0,max(anscombe)+0.5),ylim=c(0,max(anscombe)+0.5)) + 
+                      coord_cartesian(xlim=c(3,max(anscombe)+0.5),ylim=c(3,max(anscombe)+0.5)) + 
                       geom_smooth(method = "lm", se = FALSE)+theme_minimaliste(base_family=base_family)
                       ))))
                })
