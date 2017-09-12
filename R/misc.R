@@ -12,9 +12,9 @@ p.list<-lapply(1:4, function(z){
                Z1=paste0('x',z)
                Z2=paste0('y',z)
                return(suppressWarnings(ggplot_gtable(ggplot_build(
-                      ggplot(anscombe,
-                      aes_string(x=Z1,y=Z2))+geom_point()+coord_cartesian(
-                      xlim=c(0,20),ylim=c(0,20))+theme_minimaliste(base_family=base_family)+geom_smooth()
+                      ggplot(anscombe,aes_string(x=Z1,y=Z2)) + geom_point() + 
+                      coord_cartesian(xlim=c(0,max(anscombe)+0.5),ylim=c(0,max(anscombe)+0.5)) + 
+                      geom_smooth(method = "lm", se = FALSE)+theme_minimaliste(base_family=base_family)
                       ))))
                })
 ##need to be fixed later              
@@ -40,7 +40,7 @@ theme_minimaliste<-function(base_size = 11 , base_family = "", ticks = TRUE,fram
               panel.border = element_blank(), #strip.background = element_blank(),
               plot.background = element_blank(),
               legend.background = element_blank(), legend.key = element_blank(),
-              axis.line = element_blank(),
+              axis.line = element_line(arrow=arrow()),
               plot.title=element_text(hjust=0.5)
               )
     if (!ticks) {
@@ -48,4 +48,11 @@ theme_minimaliste<-function(base_size = 11 , base_family = "", ticks = TRUE,fram
     }
     return(ret)
 }
+
+
+#change fonts for plot (and include them in the pdf)
+#available fonts can be retrieved through names(pdffonts())
+library(extrafont)
+pdf(filename,family='fontname')
+dev.off()
 
