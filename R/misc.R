@@ -4,6 +4,7 @@
 ## Anscombe quartet
 AnscombePanel<-function(base_family = ""){
 library(ggplot2)
+library(ggthemes)
 library(gridExtra)
 
 data(anscombe)
@@ -13,8 +14,7 @@ p.list<-lapply(1:4, function(z){
                return(suppressWarnings(ggplot_gtable(ggplot_build(
                       ggplot(anscombe,
                       aes_string(x=Z1,y=Z2))+geom_point()+coord_cartesian(
-                                    xlim=c(0,max(anscombe)),ylim=c(0,max(anscombe)))+theme_minimaliste(base_family=base_family)
-                      
+                      xlim=c(0,20),ylim=c(0,20))+theme_minimaliste(base_family=base_family)+geom_rangeframe()
                       ))))
                })
 ##need to be fixed later              
